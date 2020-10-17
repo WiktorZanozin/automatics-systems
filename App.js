@@ -1,9 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import * as Font from 'expo-font'
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { MainScreen } from './src/screens/MainScreen';
 import { AppLoading } from 'expo';
+import { Navbar } from './src/components/Navbar';
+import NetInfo from "@react-native-community/netinfo";
+import NetworkError from './src/components/NetworkError'
 
 async function loadApplication() {
   await Font.loadAsync({
@@ -14,7 +17,8 @@ async function loadApplication() {
 
 export default function App() {
   const [isReady, setIsReady] = useState(false)
-
+  const [netStatus, setNet] = useState(true)
+  
   if (!isReady) {
     return (
       <AppLoading
@@ -26,9 +30,13 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <MainScreen/>
-      <StatusBar style="auto" />
+    <View style={styles.wrapper}>
+      <Navbar title='Systemy Automatyzacji' />
+      <View style={styles.container}>
+     {!netStatus && <NetworkError />}
+         <MainScreen/>
+         <StatusBar style="auto" />
+      </View>
     </View>
   );
 }
@@ -36,8 +44,19 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ffa',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  wrapper:{
+    flex:1
+  },
+  fill: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  text:{
+    fontSize:16
+  }
 });
