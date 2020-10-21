@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import { MainScreen } from './src/screens/MainScreen';
 import { AppLoading } from 'expo';
 import { Navbar } from './src/components/Navbar';
-import NetInfo from "@react-native-community/netinfo";
+import {useNetInfo} from "@react-native-community/netinfo";
 import NetworkError from './src/components/NetworkError'
 
 async function loadApplication() {
@@ -17,7 +17,7 @@ async function loadApplication() {
 
 export default function App() {
   const [isReady, setIsReady] = useState(false)
-  const [netStatus, setNet] = useState(true)
+  const netInfo = useNetInfo();
   
   if (!isReady) {
     return (
@@ -33,7 +33,7 @@ export default function App() {
     <View style={styles.wrapper}>
       <Navbar title='Systemy Automatyzacji' />
       <View style={styles.container}>
-     {!netStatus && <NetworkError />}
+        {!netInfo.isConnected && <NetworkError />}
          <MainScreen/>
          <StatusBar style="auto" />
       </View>

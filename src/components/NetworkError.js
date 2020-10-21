@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native'
 export default ({color}) => {
   return (
     <View style={styles.errorContainer}>
-      <Text style={styles.errorText}>Nie ma połączenia z Internetem</Text>
+      <Text style={styles.errorText}>Brak połączenia z Internetem</Text>
     </View>
   )
 }
