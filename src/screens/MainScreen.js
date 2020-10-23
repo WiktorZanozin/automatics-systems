@@ -42,7 +42,7 @@ return (
 >
   <Picker.Item itemStyle={{fontSize: 50}} label="Włącz/wyłącz diodę" value="onOff" />
   <Picker.Item label="Blink" value="blink" />
-  <Picker.Item label="Regulacja jasnością" value="lightness" />
+  <Picker.Item label="Regulacja jasności" value="lightness" />
 </Picker>
 </View>
 <View style={{marginBottom:50}}>
