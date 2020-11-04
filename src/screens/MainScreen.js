@@ -4,13 +4,49 @@ import { StyleSheet, View, Dimensions} from 'react-native'
 import {Picker} from '@react-native-community/picker'
 import { THEME } from '../theme'
 import { SelectAction } from './SelectAction';
+//import * as firebase from 'firebase';
+//import firebase from "firebase/app";
+// import firebase from "firebase"
+// import '@firebase/auth';
+// import '@firebase/firestore';
+
+// const firebaseConfig = {
+//    apiKey: 'AIzaSyCAscgGEjIxC2LzNMTq8mfT6rK-QukZGZ',
+//  // authDomain: 'your-auth-domain-b1234.firebaseapp.com',
+//   databaseURL: 'https://automatics-systems.firebaseio.com',
+//   projectId: 'automatics-systems',
+//  // storageBucket: 'your-project-id-1234.appspot.com',
+//   //messagingSenderId: '12345-insert-yourse',
+//   //appId: 'insert yours: 1:1234:web:ee873bd1234c0deb7eba61ce',
+// };
+
 
 export const MainScreen = () => {
     const [selectedValue, setSelectedValue] = useState("Włącz/Wyłącz diodę");
     const [deviceWidth, setDeviceWidth] = useState(
       Dimensions.get('window').width - THEME.PADDING_HORIZONTAL * 2
     )
-
+   // if (!firebase.apps.length) {
+     // firebase.initializeApp(firebaseConfig);
+    //  firebase.initializeApp(firebaseConfig)
+   // }
+//    if (!firebase.apps.length) {
+//     firebase.initializeApp(firebaseConfig);
+//  }
+  
+  //  .ref('illuminance/').on('illumincance', (snapshot) => {
+  //       const highscore = snapshot.val()
+  //       console.log("New high score: " + highscore);
+  //    })
+     
+    // function storeHighScore(userId, score) {
+    //   firebase
+    //     .database()
+    //     .ref('users/' + userId)
+    //     .set({
+    //       highscore: score,
+    //     });
+    // }
     useEffect(() => {
     const update = () => {
       const width =
@@ -18,12 +54,32 @@ export const MainScreen = () => {
       setDeviceWidth(width)
     }
 
-    Dimensions.addEventListener('change', update)
+      Dimensions.addEventListener('change', update)
 
     return () => {
       Dimensions.removeEventListener('change', update)
     }
   })
+
+  // const firebaseControl=()=>{
+  //   firebase
+  //   .database()
+  //   .ref('illuminance/')
+  //   .on('illumincance', (snapshot) => {
+  //     const highscore = snapshot.val()
+  //     console.log("New high score: " + highscore);
+  //   });
+    
+
+  // }
+  // useEffect(() => {
+  //   firebase.database().ref('illuminance/illuminance').on('value', function(snapshot) {
+  //     console.log(snapshot.val()) 
+  //   })
+  // })
+   
+    
+
 return (
 <View style={styles.container}>
 <View
